@@ -40,11 +40,20 @@ function draw() {
         scores++
         document.getElementById("scores").innerHTML="the total amount of digital rewards you have gathered by horribly replitacting an illustration that you've made in such a way that the artificial stupidity that has been tasked with identifying the horrible illustration that you've made believes that you have a shadow of digital artistic talent: " + scores
     }
+    strokeWeight(10);
+    stroke("black");
+    if (mouseIsPressed) {
+        line(pmouseX, pmouseY, mouseX, mouseY);
+    };
 }
 function setup () {
     canvas = createCanvas(280, 280)
     canvas.center()
     background("white")
+    canvas.mouseReleased(classifyCanvas);
+}
+function classifyCanvas() {
+    classifier.classify(canvas, gotResult);
 }
 function updateCanvas() {
     background("white")
@@ -64,5 +73,15 @@ function checkSketch() {
         timercheck=""
         answerholder=""
         updateCanvas()
+    }
+}
+function gotResult(error, results) {
+    if(error) {
+        console.error(error);
+    }
+    else{
+        console.log(results);
+        document.getElementById("label").innerHTML = "what the artificial stupidity has identified the horrible illustration you've made as: " + results[0].label;
+        document.getElementById("confi").innerHTML = "How confident the artificial stupidity is that the artificial stupidity that has been tasked with identifying the horrible illustration you've made is correct in saying that the artificial stupidity that has been tasked with identifying the horrible illustration you've made: " + Math.round(results[0].confidence*100) + "%";
     }
 }
