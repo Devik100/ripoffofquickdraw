@@ -33,6 +33,9 @@ var drawnskecth = "a"
 var answerholder = ""
 var sketch = ""
 var scores = 0
+function preload() {
+    classifier = ml5.ImageClassifier();
+}
 function draw() {
     checkSketch()
     if (drawnskecth==sketch) {
