@@ -65,7 +65,7 @@ function updateCanvas() {
 function checkSketch() {
     timerscounter++
     document.getElementById("runspeedness").innerHTML = "Amount of time you have to create an illustration of this object: " + timerscounter
-    if (timerscounter < 3000) {
+    if (timerscounter > 3000) {
         timerscounter = 0
         timercheck = "completed"
     }
