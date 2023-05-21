@@ -34,6 +34,7 @@ var answerholder = ""
 var sketch = ""
 var scores = 0
 function preload() {
+    console.log(ml5)
     classifier = ml5.ImageClassifier("MobileNet");
 }
 function draw() {
