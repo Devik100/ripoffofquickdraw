@@ -55,6 +55,16 @@ function setup () {
     background("white")
     canvas.mouseReleased(classifyCanvas);
 }
+function gotResult(error, results) {
+    if(error) {
+        console.error(error);
+    }
+    else{
+        console.log(results);
+        document.getElementById("label").innerHTML = "what the artificial stupidity has identified the horrible illustration you've made as: " + results[0].label;
+        document.getElementById("confi").innerHTML = "How confident the artificial stupidity is that the artificial stupidity that has been tasked with identifying the horrible illustration you've made is correct in saying that the artificial stupidity that has been tasked with identifying the horrible illustration you've made: " + Math.round(results[0].confidence*100) + "%";
+    }
+}
 function classifyCanvas() {
     classifier.classify(canvas, gotResult);
 }
@@ -78,13 +88,4 @@ function checkSketch() {
         updateCanvas()
     }
 }
-function gotResult(error, results) {
-    if(error) {
-        console.error(error);
-    }
-    else{
-        console.log(results);
-        document.getElementById("label").innerHTML = "what the artificial stupidity has identified the horrible illustration you've made as: " + results[0].label;
-        document.getElementById("confi").innerHTML = "How confident the artificial stupidity is that the artificial stupidity that has been tasked with identifying the horrible illustration you've made is correct in saying that the artificial stupidity that has been tasked with identifying the horrible illustration you've made: " + Math.round(results[0].confidence*100) + "%";
-    }
-}
+
