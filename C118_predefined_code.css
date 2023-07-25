@@ -5,6 +5,11 @@ h1
   background-color: cornsilk;
 }
 
+body{
+  background-color: darksalmon;
+  font-family: monospace;
+}
+
 #show_sketch
 {
   float:right;
